@@ -9,8 +9,8 @@ public class ShopApplication {
 
 	public static void main(String[] args) {
 		PrepareData.forcePrepareData();
-		ProductDao.setFactory(new Configuration()
-				.configure("configs/crud/hibernate.cfg.xml")
+		Controller.setFactory(new Configuration()
+				.configure("hibernate.cfg.xml")
 				.buildSessionFactory());
 		SpringApplication.run(ShopApplication.class, args);
 	}

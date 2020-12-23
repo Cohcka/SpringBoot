@@ -5,45 +5,46 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class ProductDao {
-    public static Product findById(Long id, SessionFactory factory){
+
+public class BuyerDao {
+    public static Buyer findById(Long id,SessionFactory factory){
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            Product product = session.get(Product.class, id);
+            Buyer buyer = session.get(Buyer.class, id);
             session.getTransaction().commit();
-            if(product!=null){
-                return product;
+            if(buyer!=null){
+                return buyer;
             } else {
-                throw new ResourceNotFoundException("Продукт с id = "+id+" не найден");
+                throw new ResourceNotFoundException("Покупатель с id = "+id+" не найден");
             }
         }
     }
 
-    public static List<Product> findAll(SessionFactory factory){
+    public static List<Buyer> findAll(SessionFactory factory){
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            List<Product> products = session.createQuery("from Products").getResultList();
+            List<Buyer> buyers = session.createQuery("from Buyers").getResultList();
             session.getTransaction().commit();
-            return products;
+            return buyers;
         }
     }
 
     public static void deleteById(Long id, SessionFactory factory){
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            Product product = session.get(Product.class, id);
-            session.delete(product);
+            Buyer buyer = session.get(Buyer.class, id);
+            session.delete(buyer);
             session.getTransaction().commit();
         }
     }
 
-    public static Product saveOrUpdate(Product product, SessionFactory factory) {
+    public static Buyer saveOrUpdate(Buyer buyer, SessionFactory factory) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
-            Product newProduct = product;
-            session.saveOrUpdate(product);
+            Buyer newBuyer = buyer;
+            session.saveOrUpdate(newBuyer);
             session.getTransaction().commit();
-            return newProduct;
+            return newBuyer;
         }
     }
 }

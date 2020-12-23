@@ -15,19 +15,19 @@ public class PrepareData {
                 .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
         Session session = null;
-        try {
-            String sql = Files.lines(Paths.get("full.sql")).collect(Collectors.joining(" "));
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-            session.createNativeQuery(sql).executeUpdate();
-            session.getTransaction().commit();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            factory.close();
-            if (session != null) {
-                session.close();
-            }
-        }
+//        try {
+//            String sql = Files.lines(Paths.get("fill.sql")).collect(Collectors.joining(" "));
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            session.createNativeQuery(sql).executeUpdate();
+//            session.getTransaction().commit();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            factory.close();
+//            if (session != null) {
+//                session.close();
+//            }
+//        }
     }
 }
