@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/products")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductService productService;
+    private ProductService productService;
 
     @GetMapping // GET http://localhost:8189/app/products
     public String showAll(Model model,

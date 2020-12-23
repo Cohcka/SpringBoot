@@ -2,9 +2,11 @@ package ru.student.shop;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ProductDao {
     public static Product findById(Long id, SessionFactory factory){
         try (Session session = factory.getCurrentSession()) {

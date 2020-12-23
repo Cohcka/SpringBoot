@@ -13,6 +13,13 @@ public class Buyer {
     @Column(name = "name")
     private String name;
 
+    @ManyToMany
+    @JoinTable(
+            name = "History",
+            joinColumns = @JoinColumn(name = "buyer_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+
     public Long getId() {
         return id;
     }

@@ -23,6 +23,14 @@ public class Product {
     @Column(name = "cost")
     private int cost;
 
+    @ManyToMany
+    @JoinTable(
+            name = "History",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "buyer_id")
+    )
+
+
     public Long getId() {
         return id;
     }
